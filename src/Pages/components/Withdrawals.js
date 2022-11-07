@@ -97,7 +97,9 @@ function Withdrawals() {
         const data = {status: "completed"}
         axios.patch(`https://purposetrustapi.herokuapp.com/api/savings/update/status/${id}`,data).then((res) => {
             console.log(res)
-            savings['commission'] ? createCommission() : null;
+            if(savings['commission']){
+                createCommission()
+            }
             sendSMS(`Your withrawal request of ${savings['amount']} Naira has been processed successfully. Your current balance is ${parseFloat(customer['balance']) - parseFloat(savings['amount'])} Naira`, customer['phoneNumber'])
             updateBalance()
         }).catch((err) => {
