@@ -36,18 +36,32 @@ const Div2 = styled.div`
     justify-content: center;
 `
 
+
 function Withdrawals() {
-    let { id } = useParams();
+    let { id , userId} = useParams();
     console.log(id)
     const [savings, setSavings] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [userId, setUserId] = useState('')
+    const [customer, setCustomer] = useState({})
     let navigate = useNavigate();
+
+
+
+
+    useEffect(() => {
+        setLoading(true)
+        axios.get(`https://purposetrustapi.herokuapp.com/api/user/get/one/${userId}`).then((res) => {
+        console.log(res.data)
+        setCustomer(res.data[0])
+    }).catch((err) => {
+        console.log(err)
+    })
+        
+    }, [id])
 
     useEffect(() => {
         axios.get(`https://purposetrustapi.herokuapp.com/api/savings/get/one/${id}`).then((res) => {
         console.log(res.data[0])
-        setUserId(res.data[0]['userId'])
         setSavings(res.data[0])
     }).catch((err) => {
         console.log(err)
@@ -63,11 +77,28 @@ function Withdrawals() {
         {"ID": savings['_id']}, 
     ];
 
+    const createCommission = () => {
+        const data = {
+            'amount': customer['principalAmount'],
+            'customerId': customer['_id'],
+            'customerName':
+                `${customer['firstName']} ${customer['lastName']}`,
+            'cardNumber': customer['cardNumber']
+          };
+        axios.post('https://purposetrustapi.herokuapp.com/api/commission/create', data).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
     const approve = () => {
         setLoading(true)
         const data = {status: "completed"}
         axios.patch(`https://purposetrustapi.herokuapp.com/api/savings/update/status/${id}`,data).then((res) => {
             console.log(res)
+            createCommission()
+            sendSMS(`Your withrawal request of ${savings['amount']} Naira has been processed successfully. Your current balance is ${parseFloat(customer['balance']) - parseFloat(savings['amount'])} Naira`, customer['phoneNumber'])
             updateBalance()
         }).catch((err) => {
             console.log(err)
@@ -80,6 +111,7 @@ function Withdrawals() {
         const data = {status: "cancelled"}
         axios.patch(`https://purposetrustapi.herokuapp.com/api/savings/update/status/${id}`,data).then((res) => {
             console.log(res)
+            sendSMS(`Your withrawal request of ${savings['amount']} Naira has been declined. Contact your agent for any complains. Your current balance is ${parseFloat(customer['balance'])} Naira`, customer['phoneNumber'])
             navigate(-1);
         }).catch((err) => {
             console.log(err)
@@ -100,6 +132,19 @@ function Withdrawals() {
         }).catch((err) => {
             console.log(err)
             setLoading(false)
+        })
+    }
+
+    const sendSMS = (message, number) => {
+        const data = {
+            message: message,
+            number: number
+        };
+
+        axios.post('https://africanspringsapi.herokuapp.com/api/post/send/trust/sms', data).then((res) => {
+            console.log(res)
+        }).catch((err) => {
+            console.log(err)
         })
     }
 

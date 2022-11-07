@@ -53,7 +53,7 @@ function Dashboard() {
             <Link to= {`/dashboard/customers/${id}`} ><Para>Customers</Para></Link>
             <Link to="/dashboard/agents"><Para>Agents</Para></Link>
             <Link to={`/dashboard/reset/password/${id}`}><Para>Reset Password</Para></Link>
-            <Link to="/"><Para>Commission</Para></Link>
+            <Link to="/dashboard/customer/commission"><Para>Commission</Para></Link>
             <Link to="/dashboard/customer/onloan"><Para>Active Loans</Para></Link>
             <Link to="/dashboard/customer/activeloan"><Para>Pending Loans</Para></Link>
         </Column>
