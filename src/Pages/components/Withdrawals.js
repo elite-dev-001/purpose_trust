@@ -97,6 +97,7 @@ function Withdrawals() {
         const data = {status: "completed"}
         axios.patch(`https://purposetrustapi.herokuapp.com/api/savings/update/status/${id}`,data).then((res) => {
             console.log(res)
+            console.log(savings['commission'])
             if(savings['commission']){
                 createCommission()
             }
