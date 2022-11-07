@@ -53,6 +53,7 @@ function Withdrawals() {
         axios.get(`https://purposetrustapi.herokuapp.com/api/user/get/one/${userId}`).then((res) => {
         console.log(res.data)
         setCustomer(res.data[0])
+        setLoading(false)
     }).catch((err) => {
         console.log(err)
     })
@@ -102,7 +103,7 @@ function Withdrawals() {
                 createCommission()
             }
             sendSMS(`Your withrawal request of ${savings['amount']} Naira has been processed successfully. Your current balance is ${parseFloat(customer['balance']) - parseFloat(savings['amount'])} Naira`, customer['phoneNumber'])
-            updateBalance()
+            // updateBalance()
         }).catch((err) => {
             console.log(err)
             setLoading(false)
