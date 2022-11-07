@@ -103,7 +103,7 @@ function Withdrawals() {
                 createCommission()
             }
             sendSMS(`Your withrawal request of ${savings['amount']} Naira has been processed successfully. Your current balance is ${parseFloat(customer['balance']) - parseFloat(savings['amount'])} Naira`, customer['phoneNumber'])
-            // updateBalance()
+            updateBalance()
         }).catch((err) => {
             console.log(err)
             setLoading(false)
