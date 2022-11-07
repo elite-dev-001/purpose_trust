@@ -40,7 +40,7 @@ const Div2 = styled.div`
 function Withdrawals() {
     let { id , userId} = useParams();
     console.log(id)
-    const [savings, setSavings] = useState([]);
+    const [savings, setSavings] = useState({});
     const [loading, setLoading] = useState(false);
     const [customer, setCustomer] = useState({})
     let navigate = useNavigate();
