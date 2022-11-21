@@ -110,7 +110,7 @@ function Login() {
         {errors.lastName && <p>Phone Number is required.</p>}
         <Input type="password" {...register('password', { required: true })} placeholder="Password" />
         {errors.age && <p>Password is required.</p>}
-        {loading ? <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><SpinnerCircular enabled={loading} /></div> : <Submit type="submit" />}
+        {/* {loading ? <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}><SpinnerCircular enabled={loading} /></div> : <Submit type="submit" />} */}
     </Form>
       <p style={{color: 'red', fontSize: '1rem'}}> {error} </p>
       </InputSection>
