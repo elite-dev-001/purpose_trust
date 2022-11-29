@@ -60,7 +60,7 @@ function Commission() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get('https://purposetrustapi.herokuapp.com/api/commission/get/all').then((res) => {
+        axios.get('https://precious-pajamas-deer.cyclic.app/api/commission/get/all').then((res) => {
         console.log(res.data['results'])
         setCustomers(res.data['results'])
         setLoading(false)

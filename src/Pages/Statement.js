@@ -47,7 +47,7 @@ function Statement() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://purposetrustapi.herokuapp.com/api/user/get/one/${id}`).then((res) => {
+        axios.get(`https://precious-pajamas-deer.cyclic.app/api/user/get/one/${id}`).then((res) => {
         console.log(res.data)
         setCustomer(res.data[0])
         setLoading(false)
@@ -60,7 +60,7 @@ function Statement() {
 
     useEffect(() => {  
         setLoading(true) 
-        axios.get('https://purposetrustapi.herokuapp.com/api/savings/get/all').then((res) => {
+        axios.get('https://precious-pajamas-deer.cyclic.app/api/savings/get/all').then((res) => {
         // console.log(res.data['results'])
         setHistory(res.data['results'].filter(saving => (saving["userId"] === id && saving['status'] === 'completed')))
         

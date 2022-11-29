@@ -98,7 +98,7 @@ function SingleCustomer() {
 
     useEffect(() => {  
         setLoading(true) 
-        axios.get('https://purposetrustapi.herokuapp.com/api/savings/get/all').then((res) => {
+        axios.get('https://precious-pajamas-deer.cyclic.app/api/savings/get/all').then((res) => {
         // console.log(res.data['results'])
         setDeposit(res.data['results'].filter(saving => (saving["userId"] === id && saving['status'] === 'deposit')))
 
@@ -114,7 +114,7 @@ function SingleCustomer() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://purposetrustapi.herokuapp.com/api/user/get/one/${id}`).then((res) => {
+        axios.get(`https://precious-pajamas-deer.cyclic.app/api/user/get/one/${id}`).then((res) => {
         console.log(res.data)
         setCustomer(res.data[0])
         setAkawo(res.data[0]['akawoEligible'])
@@ -129,7 +129,7 @@ function SingleCustomer() {
     const toggleAkawo = () => {
         const data = {loanStatus: !akawo}
         setAkawoLoading(true)
-        axios.patch(`https://purposetrustapi.herokuapp.com/api/user/update/akawo/loan/${id}`, data).then((res) => {
+        axios.patch(`https://precious-pajamas-deer.cyclic.app/api/user/update/akawo/loan/${id}`, data).then((res) => {
             console.log(res)
             setAkawo(!akawo)
             setAkawoLoading(false)
@@ -141,7 +141,7 @@ function SingleCustomer() {
     const toggleBusiness = () => {
         const data = {loanStatus: !business}
         setBusinessLoading(true)
-        axios.patch(`https://purposetrustapi.herokuapp.com/api/user/update/business/loan/${id}`, data).then((res) => {
+        axios.patch(`https://precious-pajamas-deer.cyclic.app/api/user/update/business/loan/${id}`, data).then((res) => {
             console.log(res)
             setBusiness(!business)
             setBusinessLoading(false)

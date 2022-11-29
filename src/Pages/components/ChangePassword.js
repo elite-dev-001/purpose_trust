@@ -95,7 +95,7 @@ function ChangePassword() {
 
       axios({
       method: 'post',
-      url: `https://purposetrustapi.herokuapp.com/api/reset/password/${id}`,
+      url: `https://precious-pajamas-deer.cyclic.app/api/reset/password/${id}`,
       data: newData
     }).then((res) => {
       console.log(res.data)

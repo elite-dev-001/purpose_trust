@@ -73,7 +73,7 @@ function ListAgent() {
 
     useEffect(() => {
       setLoading(true)
-        axios.get('https://purposetrustapi.herokuapp.com/api/agent/get/all').then((res) => {
+        axios.get('https://precious-pajamas-deer.cyclic.app/api/agent/get/all').then((res) => {
         // console.log(res.data['results'])
         setAgents(res.data['results'])
         setLoading(false)

@@ -58,7 +58,7 @@ function ApproveLoan() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://purposetrustapi.herokuapp.com/api/user/get/one/${id}`).then((res) => {
+        axios.get(`https://precious-pajamas-deer.cyclic.app/api/user/get/one/${id}`).then((res) => {
         console.log(res.data)
         setLoading(false)
         setCustomer(res.data[0])
@@ -84,7 +84,7 @@ function ApproveLoan() {
     const approve = () => {
         setApproveLoading(true)
         const data = {loanAmount: loanDetails['loanAmount']}
-        axios.patch(`https://purposetrustapi.herokuapp.com/api/user/approve/loan/${id}`,data).then((res) => {
+        axios.patch(`https://precious-pajamas-deer.cyclic.app/api/user/approve/loan/${id}`,data).then((res) => {
             console.log(res)
             navigate(-1);
         }).catch((err) => {
@@ -96,7 +96,7 @@ function ApproveLoan() {
     const decline = () => {
         setDeclineLoading(true)
         const data = {pendingLoan: false}
-        axios.patch(`https://purposetrustapi.herokuapp.com/api/user/decline/loan/${id}`,data).then((res) => {
+        axios.patch(`https://precious-pajamas-deer.cyclic.app/api/user/decline/loan/${id}`,data).then((res) => {
             console.log(res)
             navigate(-1);
         }).catch((err) => {

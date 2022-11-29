@@ -50,7 +50,7 @@ function Withdrawals() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://purposetrustapi.herokuapp.com/api/user/get/one/${userId}`).then((res) => {
+        axios.get(`https://precious-pajamas-deer.cyclic.app/api/user/get/one/${userId}`).then((res) => {
         console.log(res.data)
         setCustomer(res.data[0])
         setLoading(false)
@@ -61,7 +61,7 @@ function Withdrawals() {
     }, [id])
 
     useEffect(() => {
-        axios.get(`https://purposetrustapi.herokuapp.com/api/savings/get/one/${id}`).then((res) => {
+        axios.get(`https://precious-pajamas-deer.cyclic.app/api/savings/get/one/${id}`).then((res) => {
         console.log(res.data[0])
         setSavings(res.data[0])
     }).catch((err) => {
@@ -86,7 +86,7 @@ function Withdrawals() {
                 `${customer['firstName']} ${customer['lastName']}`,
             'cardNumber': customer['cardNumber']
           };
-        axios.post('https://purposetrustapi.herokuapp.com/api/commission/create', data).then(res => {
+        axios.post('https://precious-pajamas-deer.cyclic.app/api/commission/create', data).then(res => {
             console.log(res)
         }).catch(err => {
             console.log(err)
@@ -96,7 +96,7 @@ function Withdrawals() {
     const approve = () => {
         setLoading(true)
         const data = {status: "completed"}
-        axios.patch(`https://purposetrustapi.herokuapp.com/api/savings/update/status/${id}`,data).then((res) => {
+        axios.patch(`https://precious-pajamas-deer.cyclic.app/api/savings/update/status/${id}`,data).then((res) => {
             console.log(res)
             console.log(savings['commission'])
             if(savings['commission']){
@@ -113,7 +113,7 @@ function Withdrawals() {
     const decline = () => {
         setLoading(true)
         const data = {status: "cancelled"}
-        axios.patch(`https://purposetrustapi.herokuapp.com/api/savings/update/status/${id}`,data).then((res) => {
+        axios.patch(`https://precious-pajamas-deer.cyclic.app/api/savings/update/status/${id}`,data).then((res) => {
             console.log(res)
             sendSMS(`Your withrawal request of ${savings['amount']} Naira has been declined. Contact your agent for any complains. Your current balance is ${parseFloat(customer['balance'])} Naira`, customer['phoneNumber'])
             navigate(-1);
@@ -129,7 +129,7 @@ function Withdrawals() {
             amount: savings['amount'],
             operation: savings['status']
         }
-        axios.patch(`https://purposetrustapi.herokuapp.com/api/user/update/balance/${userId}`,data).then((res) => {
+        axios.patch(`https://precious-pajamas-deer.cyclic.app/api/user/update/balance/${userId}`,data).then((res) => {
             console.log(res)
             setLoading(false)
             navigate(-1);

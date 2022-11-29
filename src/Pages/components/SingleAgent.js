@@ -78,7 +78,7 @@ function SingleAgent() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://purposetrustapi.herokuapp.com/api/agent/get/one/${id}`).then((res) => {
+        axios.get(`https://precious-pajamas-deer.cyclic.app/api/agent/get/one/${id}`).then((res) => {
         console.log(res.data)
         setAgent(res.data[0])
         setLoading(false)
@@ -92,7 +92,7 @@ function SingleAgent() {
 
     useEffect(() => {
         setLoading(true)
-      axios.get('https://purposetrustapi.herokuapp.com/api/user/get/all').then((res) => {
+      axios.get('https://precious-pajamas-deer.cyclic.app/api/user/get/all').then((res) => {
       // console.log(res.data['results'])
       setMyCustomers(res.data['results'].filter(customer => customer["agentId"] === id))
       setLoading(false)

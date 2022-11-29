@@ -65,7 +65,7 @@ function PendingLoan() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get('https://purposetrustapi.herokuapp.com/api/user/get/all').then((res) => {
+        axios.get('https://precious-pajamas-deer.cyclic.app/api/user/get/all').then((res) => {
         console.log(res.data['results'])
         const data = Array.from(res.data['results'])
         setCustomers(data.filter((customer) => customer['pendingLoan']))

@@ -98,7 +98,7 @@ function CreateNewAgent() {
 
       axios({
         method: 'post',
-        url: 'https://purposetrustapi.herokuapp.com/api/agent/register',
+        url: 'https://precious-pajamas-deer.cyclic.app/api/agent/register',
         data: formData,
       }).then((res) => {
         if(res.data['status'] === 'ok'){
