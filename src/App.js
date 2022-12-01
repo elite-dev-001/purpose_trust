@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CardPayment from './Pages/CardPayment';
 import Commission from './Pages/Commission';
 import ApproveLoan from './Pages/components/ApproveLoan';
 import ChangePassword from './Pages/components/ChangePassword';
@@ -26,6 +27,7 @@ function App() {
           <Route path='customers/:id' element={<ListUser />} />
           <Route path='agents' element={<ListAgent />} />
           <Route path='customer/commission' element={<Commission />} />
+          <Route path='customer/cards' element={<CardPayment />} />
           <Route path='customer/:id' element={<SingleCustomer />} />
           <Route path='customer/loan/:id' element={<ApproveLoan />} />
           <Route path='customer/:userId/deposits/:id' element={<Deposits />} />
