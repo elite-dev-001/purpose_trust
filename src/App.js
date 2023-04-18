@@ -23,7 +23,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Login/>} />
-        {/* <Route path='/dashboard' element={<Dashboard/>} > 
+        <Route path='/dashboard' element={<Dashboard/>} > 
           <Route path='customers/:id' element={<ListUser />} />
           <Route path='agents' element={<ListAgent />} />
           <Route path='customer/commission' element={<Commission />} />
@@ -38,8 +38,8 @@ function App() {
           <Route path='new/agent' element={<CreateNewAgent />} />
           <Route path='customer/onloan' element={<OnLoan />} />
           <Route path='customer/activeloan' element={<PendingLoan />} />
-        </Route> */}
-        {/* <Route path ='/customer/statement/:id' element={ <Statement />} /> */}
+        </Route>
+        <Route path ='/customer/statement/:id' element={ <Statement />} />
       </Routes>
     </Router>
   );

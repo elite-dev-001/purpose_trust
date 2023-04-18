@@ -5,18 +5,15 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { SpinnerCircular } from 'spinners-react';
 import axios from 'axios'
-import img from './../images/hosting-expired.png'
 // import axios from 'axios';
 // import currentAPI from './utility';
 // import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 
 const Container = styled.div`
-    // display: grid;
-    // grid-template-columns: 50% 50%;
-    // height: 100vh;
-    color: black;
-    background-color: white;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh
 `;
 
 const InputSection = styled.div`
@@ -28,7 +25,7 @@ const InputSection = styled.div`
 `
 const BackgroundImage = styled.div`
     background: #000;
-    background-image: url(${img});
+    background-image: url(${logo});
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -105,9 +102,7 @@ function Login() {
 
   return (
     <Container>
-      <img src={img} />
-      {/* <p>Hosting Expired</p> */}
-      {/* <InputSection>
+      <InputSection>
       <p>Log In to your Account</p>
       <p>For Admins Only</p>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -119,7 +114,6 @@ function Login() {
     </Form>
       <p style={{color: 'red', fontSize: '1rem'}}> {error} </p>
       </InputSection>
-      <BackgroundImage /> */}
       <BackgroundImage />
     </Container>
   );
